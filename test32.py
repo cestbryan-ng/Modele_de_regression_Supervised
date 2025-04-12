@@ -55,6 +55,13 @@ def reg_poly(c, x) :
         som.append(j * (x ** i))
     return sum(som)
 
+# fonction coût
+def cost(x, y, c) :
+    som = list()
+    for i in range(len(x)) :
+        som.append((reg_poly(c, x[i]) - y[i]) ** 2)
+    return sum(som) / (2 * len(x))
+
 # Affichage du nuage et du modèle linéaire simple
 degree = 1
 s = calcul_s(x, y, degree)
@@ -65,13 +72,12 @@ x_reg, y_reg = np.linspace(min(x) - 1, max(x) + 1, 100), list()
 for i in x_reg :
     y_reg.append(reg_poly(c, i))
 
-plt.scatter(x, y, marker = "x")
-plt.plot(x_reg, y_reg, label = "Estimation", color = "red")
+plt.scatter(x, y, marker = "x", color = "gray")
+plt.plot(x_reg, y_reg, label = "Estimation moindre carré", color = "red")
 plt.xlim(min(x) - 1, max(x) + 1)
 plt.ylim(min(y) - 50, max(y) + 50)
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.title("Régression")
+plt.title(f"Coût de la régression : {cost(x, y, c):.2f}")
 plt.legend()
-plt.grid(True)
 plt.show()
