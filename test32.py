@@ -62,8 +62,16 @@ def cost(x, y, c) :
         som.append((reg_poly(c, x[i]) - y[i]) ** 2)
     return sum(som) / (2 * len(x))
 
+# calcul du dégrée
+def calcul_degree(y) :
+    degree = 1
+    for i in range(len(y) - 1) :
+        if y[i] > y[i + 1] :
+            degree += 1
+    return degree
+
 # Affichage du nuage et du modèle linéaire simple
-degree = 1
+degree = calcul_degree(y)
 s = calcul_s(x, y, degree)
 w = calcul_w(x, y, degree)
 c = calcul_c(s, w)
@@ -73,7 +81,7 @@ for i in x_reg :
     y_reg.append(reg_poly(c, i))
 
 plt.scatter(x, y, marker = "x", color = "gray")
-plt.plot(x_reg, y_reg, label = "Estimation moindre carré", color = "red")
+plt.plot(x_reg, y_reg, label = f"Estimation moindre carré degrée polynome = {degree}", color = "red")
 plt.xlim(min(x) - 1, max(x) + 1)
 plt.ylim(min(y) - 50, max(y) + 50)
 plt.xlabel("X")
