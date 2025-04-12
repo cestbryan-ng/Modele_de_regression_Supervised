@@ -21,7 +21,6 @@ def calcul_w(x, y, degree = 1) :
         som.clear()
     w = np.reshape(w, (len(w), 1))
     return w
-    print(w)
 
 # S
 def calcul_s(x, y, degree = 1) :
