@@ -4,7 +4,7 @@ from random import randint
 from copy import deepcopy
 
 # Le nuage de point
-x = list(set([randint(1, 10) for i in range(10)]))
+x = list(set([randint(1, 50) for i in range(80)]))
 y = sorted([randint(500, 800) for i in range(len(x))])
 
 # Régréssion polynomiale
@@ -56,8 +56,9 @@ def reg_poly(c, x) :
     return sum(som)
 
 # Affichage du nuage et du modèle linéaire simple
-s = calcul_s(x, y)
-w = calcul_w(x, y)
+degree = 1
+s = calcul_s(x, y, degree)
+w = calcul_w(x, y, degree)
 c = calcul_c(s, w)
 
 x_reg, y_reg = np.linspace(min(x) - 1, max(x) + 1, 100), list()
