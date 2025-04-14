@@ -80,7 +80,7 @@ def calcul_degree(y) :
             degree += 1
     return degree
 
-# Affichage du nuage et du modèle linéaire simple
+# Affichage du nuage et du modèle linéaire simple²
 degree = calcul_degree(y)
 s = calcul_s(x, y, degree)
 w = calcul_w(x, y, degree)

@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from random import randint, shuffle
-from copy import deepcopy
+from random import randint
 
 # Le nuage de point
 x = list(set([randint(1, 50) for i in range(80)]))
