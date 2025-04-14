@@ -3,9 +3,19 @@ import matplotlib.pyplot as plt
 from random import randint
 from copy import deepcopy
 
-# Le nuage de point
-x = list(set([randint(1, 50) for i in range(80)]))
-y = sorted([randint(500, 800) for i in range(len(x))])
+# Dataset
+print("Remplissement du dataset")
+while True :
+    x = input("Valeur du tableau x : ").split()
+    x = [int(i) for i in x]
+    y = input("Valeur du tableau y : ").split()
+    y = [float(i) for i in y]
+    if len(x) != len(y) :
+        print("Les deux tableaux doivent avoir la même taille.")
+        continue
+    break
+# x = list(set([randint(1, 50) for i in range(80)]))
+# y = sorted([randint(500, 800) for i in range(len(x))])
 
 # Régréssion polynomiale
 # Principe résoudre SC=W donné par la formule des moindres carrées 
@@ -82,10 +92,8 @@ for i in x_reg :
 
 plt.scatter(x, y, marker = "x", color = "gray")
 plt.plot(x_reg, y_reg, label = f"Estimation moindre carré degrée polynome = {degree}", color = "red")
-plt.xlim(min(x) - 1, max(x) + 1)
-plt.ylim(min(y) - 50, max(y) + 50)
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.title(f"Coût de la régression : {cost(x, y, c):.2f}")
+plt.title(f"Coût de la régression (Pas encore optimal) : {cost(x, y, c):.2f}")
 plt.legend()
 plt.show()
